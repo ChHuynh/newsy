@@ -17,6 +17,14 @@
  </li>
  <% end %>
  </ul>
-
+<br>
+<h2> HackerNews </h2>
+ <ul>
+ <% @hackernews_api["articles"].each do |article|  %>
+ <li>
+  <a href="<%=article["url"] %>"> <%=  article["title"]  %> </a>
+ </li>
+ <% end %>
+ </ul>
 
 </p>

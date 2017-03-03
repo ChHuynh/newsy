@@ -1,0 +1,22 @@
+<h1>Newsy</h1>
+<p>
+<h2> IGN News </h2>
+ <ul>
+ <% @ign_api["articles"].each do |article|  %>
+ <li>
+  <a href="<%=article["url"] %>"> <%=  article["title"]  %> </a>
+ </li>
+ <% end %>
+ </ul>
+<br>
+<h2> TechCrunch News </h2>
+ <ul>
+ <% @techcrunch_api["articles"].each do |article|  %>
+ <li>
+  <a href="<%=article["url"] %>"> <%=  article["title"]  %> </a>
+ </li>
+ <% end %>
+ </ul>
+
+
+</p>

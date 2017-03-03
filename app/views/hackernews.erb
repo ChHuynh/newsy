@@ -1,0 +1,12 @@
+<h1>Hacker News</h1>
+
+  <ul>
+  <% @latest_hackernews["articles"].each do |article|  %>
+     <li>
+      <a href="<%=article["url"] %>"> <%=  article["title"]  %> </a>
+      <br>
+      <%= article["description"] %>
+    </li>
+    <br>
+    <% end %>
+  </ul>

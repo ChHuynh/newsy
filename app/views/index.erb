@@ -1,6 +1,9 @@
 <center><h1>Newsy</h1> </center>
+<br><br><br>
+
+<center><h2>Featured Headlines</h2> </center>
 <div class="col-md-4">
-   <h2> IGN News </h2>
+   <h3> IGN News </h3>
     <ul>
      <% @ign_api["articles"].each do |article|  %>
      <li>
@@ -10,7 +13,7 @@
   </ul>
 </div>
 <div class="col-md-4">
- <h2> TechCrunch News </h2>
+ <h3> TechCrunch News </h3>
   <ul>
    <% @techcrunch_api["articles"].each do |article|  %>
    <li>
@@ -20,7 +23,7 @@
 </ul>
 </div>
 <div class="col-md-4">
-  <h2> HackerNews </h2>
+  <h3> HackerNews </h3>
 <ul>
  <% @hackernews_api["articles"].each do |article|  %>
  <li>

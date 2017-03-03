@@ -1,0 +1,8 @@
+<h1>TechCrunch News</h1>
+  <ul>
+  <% @latest_techcrunch["articles"].each do |article|  %>
+     <li>
+      <a href="<%=article["url"] %>"> <%=  article["title"]  %> </a>
+    </li>
+    <% end %>
+  </ul>

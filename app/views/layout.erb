@@ -6,7 +6,7 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/normalize.css">
   <!--
     application.css is where you put your styles
@@ -21,6 +21,16 @@
   <title></title>
 </head>
 <body>
+<header>
+<a href="/news">Home</a>
+<br>
+<a href="/news/ign">Latest IGN News</a>
+<br>
+<a href="/news/techcrunch">Latest TechCrunch News</a>
+<br>
+<a href="/news/hackernews">Latest Hacker News</a>
+<br>
+</header>
   <div class="container">
     <div class="row">
       <%= yield %>

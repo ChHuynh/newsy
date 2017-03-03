@@ -1,0 +1,8 @@
+<h1>IGN News</h1>
+<ul>
+     <% @latest_ign["articles"].each do |article|  %>
+     <li>
+      <a href="<%=article["url"] %>"> <%=  article["title"]  %> </a>
+    </li>
+    <% end %>
+  </ul>

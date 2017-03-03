@@ -5,5 +5,8 @@ get '/' do
 
   @hackernews_api = HTTParty.get("https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=#{ENV['APIKEY']}")
   erb :"index"
+
+
+
 end
 

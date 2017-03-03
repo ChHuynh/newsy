@@ -3,6 +3,10 @@
      <% @latest_ign["articles"].each do |article|  %>
      <li>
       <a href="<%=article["url"] %>"> <%=  article["title"]  %> </a>
+      <br>
+      <%= article["description"] %>
     </li>
+    <br>
     <% end %>
   </ul>
+

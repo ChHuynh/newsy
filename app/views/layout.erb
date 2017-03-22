@@ -24,6 +24,18 @@
 <header>
 <a href="/news">Home</a>
 <br>
+ <%if current_user%>
+<a href="/users/<%=@user.id%>"><%= @user.username%></a>
+<br>
+<a href="/users/logout">logout</a>
+<br>
+<%else%>
+<a href="/users/login">login</a>
+<br>
+<a href="users/new">register</a>
+<br>
+<%end%>
+<br>
 <a href="/news/ign">Latest IGN News</a>
 <br>
 <a href="/news/techcrunch">Latest TechCrunch News</a>

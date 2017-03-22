@@ -6,7 +6,7 @@ gem 'pg'
 # Sinatra driver
 
 gem 'httparty'
-
+gem 'bcrypt'
 gem 'sinatra', '~> 1.0'
 gem 'sinatra-contrib'
 

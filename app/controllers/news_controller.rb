@@ -1,14 +1,19 @@
 get '/news' do
   @ign_api = HTTParty.get("https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=#{ENV['APIKEY']}")
-
   @techcrunch_api = HTTParty.get("https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=#{ENV['APIKEY']}")
-
   @hackernews_api = HTTParty.get("https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=#{ENV['APIKEY']}")
+
   erb :"index"
 end
 
 get '/news/ign' do
   @latest_ign = HTTParty.get("https://newsapi.org/v1/articles?source=ign&sortBy=latest&apiKey=#{ENV['APIKEY']}")
+  latest_ign_article = Article.where(source: 'IGN').order(created_at: :desc).first
+  parser(@latest_ign, "IGN")
+  @ign_articles = Article.find_by(source: "IGN")
+  p "!!!!!!!!!!!!!!!!!!!!!!!"
+  p @ign_articles
+  p "!!!!!!!!!!!!!!!!!!!!!!!"
 
   erb :"ign"
 end

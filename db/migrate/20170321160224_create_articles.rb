@@ -4,6 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title, null: false
       t.string :description, null: false
       t.string :url, null: false
+      t.string :source, null: false
       t.datetime :publish_date, null: false
 
       t.timestamps null: false

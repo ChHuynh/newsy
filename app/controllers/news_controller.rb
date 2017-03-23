@@ -1,32 +1,27 @@
 get '/news' do
+@articles = Article.all.sort_by(&:publish_date).reverse
+ erb :"update"
+end
+
+get "/news/update" do #idk what to name this route, for saving stuff to database
   @ign_api = HTTParty.get("https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=#{ENV['APIKEY']}")
   @techcrunch_api = HTTParty.get("https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=#{ENV['APIKEY']}")
   @hackernews_api = HTTParty.get("https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=#{ENV['APIKEY']}")
 
-  erb :"index"
+  parser(@ign_api, 1)
+  parser(@techcrunch_api, 2)
+  parser(@hackernews_api, 3)
+
+# ign = 1
+# techcrunch = 2
+# hackernews = 3
+
+  redirect "/"
 end
 
-get '/news/ign' do
-  @latest_ign = HTTParty.get("https://newsapi.org/v1/articles?source=ign&sortBy=latest&apiKey=#{ENV['APIKEY']}")
-  latest_ign_article = Article.where(source: 'IGN').order(created_at: :desc).first
-  parser(@latest_ign, "IGN")
-  @ign_articles = Article.find_by(source: "IGN")
-  p "!!!!!!!!!!!!!!!!!!!!!!!"
-  p @ign_articles
-  p "!!!!!!!!!!!!!!!!!!!!!!!"
-
-  erb :"ign"
+get "/news/:provider_id" do
+@articles = Article.where(provider_id: params[:provider_id])
+  erb :"source"
 end
 
-get '/news/techcrunch' do
-  @latest_techcrunch = HTTParty.get("https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=#{ENV['APIKEY']}")
 
-  erb :"techcrunch"
-end
-
-get '/news/hackernews' do
-  @latest_hackernews = HTTParty.get("https://newsapi.org/v1/articles?source=hacker-news&sortBy=latest&apiKey=#{ENV['APIKEY']}")
-
-  erb :"hackernews"
-end
-#more stuff here

@@ -2,8 +2,7 @@ class User < ActiveRecord::Base
   validates :username, :password_hash, presence: true
   validates :username, uniqueness: true
 
-  has_many :subscriptions
-  has_many :articles, through: :subscriptions
+has_many :subcriptions
   include BCrypt
 
   def password

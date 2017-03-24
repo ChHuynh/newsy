@@ -3,14 +3,14 @@
     <%if provider.subscriptions.where(user_id: @user.id) == [] %>
     <form action="/news/<%=provider.id%>/subscribe" method="post">
       <%= provider.name%>
-      <input type="submit" value="subscribe!">
+      <input class="sub" type="submit" value="subscribe!">
       </form>
       <br>
       <%else%>
-      <form action="/news/<%=provider.id%>/unsubscribe" method="post">
+      <form  action="/news/<%=provider.id%>/unsubscribe" method="post">
       <input type="hidden" name="_method" value="delete">
       <%= provider.name%>
-      <input type="submit" value="unsubscribe">
+      <input class="unsub" type="submit" value="unsubscribe">
       </form>
       <br>
       <%end%>
@@ -19,19 +19,18 @@
 <center>
 <h3>latest from your subscribed news:</h3>
 </center>
-<%@subscriber_feed.each do |subs|%>
-  <div class="col-md-4">
-  <center>
-  <h4><%=subs.articles.first.provider.name%></h4>
-  </center>
-  <ul>
-  <%subs.articles.first(3).each do |article|%>
-  <li>
-  <a href="<%=article.url %>"> <%=  article.title  %> </a>
+<%@subscriber_feed.each_slice(3) do |subscriptions|%>
+  <div class="col-md-6">
+    <% subscriptions.each do |sub| %>
+    <center>
+    <h4><%=sub.provider.name%></h4>
+    </center>
+    <%sub.articles.first(5).each do |article|%>
+    <ul>
+    <li> <a href="<%=article.url %>"> <%=  article.title  %> </a>
     </li>
-    <br>
-    <% end %>
     </ul>
-    <br>
-    </div>
+    <%end%>
+    <%end%>
+  </div>
 <%end%>

@@ -1,10 +1,36 @@
 <h3>news you can subscribe to!</h3>
   <%@providers.each do |provider|%>
-  <form action="/news/<%=provider.id%>/subscribe" method="post">
-  <%= provider.name%>
-  <input type="submit" value="subscribe!">
-  </form>
-  <br>
+    <%if provider.subscriptions.where(user_id: 2) == [] %>
+    <form action="/news/<%=provider.id%>/subscribe" method="post">
+      <%= provider.name%>
+      <input type="submit" value="subscribe!">
+      </form>
+      <br>
+      <%else%>
+      <form action="/news/<%=provider.id%>/unsubscribe" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <%= provider.name%>
+      <input type="submit" value="unsubscribe">
+      </form>
+      <br>
+      <%end%>
   <%end%>
 
-<
+<center>
+<h3>your subscribed newsfeeds:</h3>
+</center>
+<%@subscriber_feed.each do |subs|%>
+  <div class="col-md-4">
+  <center>
+  <h4><%=subs.articles.first.provider.name%></h4>
+  </center>
+  <ul>
+  <%subs.articles.first(5).each do |article|%>
+  <li>
+  <a href="<%=article.url %>"> <%=  article.title  %> </a>
+    </li>
+    <br>
+    <% end %>
+    </ul>
+    </div>
+<%end%>

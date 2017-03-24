@@ -36,7 +36,11 @@ end
 get "/users/:id" do
   if current_user
     @providers = Provider.all
-    @subscriber = Subscription.where(user_id: params[:id])
+    @subscriber_feed = Subscription.where(user_id: params[:id])
+
+
+
+
   erb :"/users/show"
   else
     redirect "/"

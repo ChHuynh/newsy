@@ -1,0 +1,10 @@
+<h3>news you can subscribe to!</h3>
+  <%@providers.each do |provider|%>
+  <form action="/news/<%=provider.id%>/subscribe" method="post">
+  <%= provider.name%>
+  <input type="submit" value="subscribe!">
+  </form>
+  <br>
+  <%end%>
+
+<

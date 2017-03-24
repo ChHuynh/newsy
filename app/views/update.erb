@@ -1,0 +1,17 @@
+<br><br><br>
+<center><h2>Latest Headlines</h2> </center>
+ <ul>
+  <% @articles.each do |article|  %>
+     <li>
+     <h4><%=article.provider.name%></h4>
+      <a href="<%=article.url %>"> <%=  article.title  %> </a>
+      <br>
+      <%= article.description %>
+      <br>
+      <%= article.publish_date.in_time_zone("Pacific Time (US & Canada)").strftime('%B %-d, %Y %l:%M%P %Z')%>
+
+
+    </li>
+    <br>
+    <% end %>
+  </ul>

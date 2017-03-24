@@ -14,9 +14,9 @@ post "/news/:provider_id/subscribe" do
 delete "/news/:provider_id/unsubscribe" do
   current_user
   @provider = Provider.find_by(id: params[:provider_id])
-  p @provider
-  # subscribed
-  # @subscriber.destroy
+  @sub = @provider.subscriptions.find_by(user_id: @user.id)
+  @sub.destroy
+
 
     redirect "/users/#{@user.id}"
 end
